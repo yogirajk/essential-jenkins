@@ -44,10 +44,10 @@ pipeline {
         always {
             echo "Collecting jUnit test results..."
             // Add jUnit report collection here...
-            junit keepProperties: true, keepTestNames: true, stdioRetention: '', testResults: ''
+            junit allowEmptyResults: true, stdioRetention: '', testResults: '**/TEST-com.learningjenkins.AppTest.xml'
             echo "Archiving the JAR file..."
             // Add artifact archiving here...
-            archiveArtifacts artifacts: 'example.jar', followSymlinks: false
+            archiveArtifacts allowEmptyArchive: true, artifacts: '**/hello-1.0-SNAPSHOT.jar'
         }
     }
 }
